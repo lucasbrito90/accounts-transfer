@@ -34,14 +34,14 @@ O comando abaixo inicializa os containers do projeto:
 ### Criando o ambiente de desenvolvimento
 - Inicializa o ambiente de desenvolvimento<br>
 ```docker-compose up -d```
-- Instalando dependencias
+- Instalando dependencias<br>
 ```docker exec -it app composer install```
 - Cria as tabelas no banco de dados<br>
 ```docker exec -it app php artisan migrate```
 - Popula o banco de dados<br>
 ```docker exec -it app php artisan db:seed --class=CustomerSeeder```<br>
 - Incializa a fila de mensagens<br>
-  - O _comando abaixo inicializa a fila de mensagens, porém travará seu terminal:_
+  - O _comando abaixo inicializa a fila de mensagens, porém travará seu terminal:_<br>
   ```docker exec -it app php artisan queue:work --daemon --tries=3```
 
 ### Links Utéis do aplicativo
