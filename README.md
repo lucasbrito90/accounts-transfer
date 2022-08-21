@@ -32,10 +32,10 @@ O comando abaixo inicializa os containers do projeto:
 
 
 ### Criando o ambiente de desenvolvimento
-- Instalando dependencias
-```docker exec -it app composer install```
 - Inicializa o ambiente de desenvolvimento<br>
 ```docker-compose up -d```
+- Instalando dependencias
+```docker exec -it app composer install```
 - Cria as tabelas no banco de dados<br>
 ```docker exec -it app php artisan migrate```
 - Popula o banco de dados<br>
