@@ -1,64 +1,74 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><img src="https://www.svgrepo.com/show/37299/transfer.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<div align="center">
+    <h1>Transfer Balance - Test</h1>
+</div>
 
-## About Laravel
+## Sobre Account Transfer
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Uma pequena aplicação para transferir saldos entre contas bancárias. Este projeto utiliza 
+o [Framework Laravel 9](https://laravel.com/docs/9.x) para construir a aplicação com o [PHP na versão 8.1](https://www.php.net/releases/8.1/en.php).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Executando o Projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+*Necessário instalar o Docker e o Docker Compose*
+[Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/install/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+_Para os comandos relacionados ao Docker, entre no diretório **_docker-compose_** localizado na  raiz do projeto._
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Inicializando os containers
+O comando abaixo inicializa os containers do projeto:
 
-## Laravel Sponsors
+> _As portas 8000 até 8003 deverão  ser abertas para o aplicativo._
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- **app**: Aplicação principal *php-fpm*
+- **db**: Banco de dados
+- **redis-compose**: Cache Redis, Fila de mensagens, etc.
+- **webserver**: Servidor web *nginx*
+- **adminer**: Interface de administração de banco de dados
+- **mailhog**: Servidor de e-mail
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+### Criando o ambiente de desenvolvimento
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Inicializa o ambiente de desenvolvimento<br>
+```docker-compose up -d```
+- Cria as tabelas no banco de dados<br>
+```docker exec -it app php artisan migrate```
+- Popula o banco de dados<br>
+```docker exec -it app php artisan db:seed --class=CustomerSeeder```<br>
+- Incializa a fila de mensagens<br>
+  - O _comando abaixo inicializa a fila de mensagens, porém travará seu terminal:_
+  ```docker exec -it app php artisan queue:work --daemon --tries=3```
 
-## Code of Conduct
+### Links Utéis do aplicativo
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- #### Adminer
+  - Aplicação de administração de banco de dados
+  - [http://localhost:8001/](http://localhost:8001/)
+  - Dados para acesso ao banco de dados:
+    - **Sistema**: PostgreSQL
+    - **Servidor**: db
+    - **Usuário**: postgres
+    - **Senha**: postgres
+    - **Base de dados**: postgres
+    
+- #### Mailhog
+  - Aplicação de e-mail
+  - [http://localhost:8003/](http://localhost:8003/)
 
-## Security Vulnerabilities
+- #### Documentação
+  - Documentação da API - Descrição dos endpoints e suas especificações
+  - [http://localhost:8000/doc ](http://localhost:8000/doc)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- #### Webserver
+  - Aplicação web
+  - [http://localhost:8000/api](http://localhost:8000/api)
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Variáveis de ambiente
+
+_As variáveis de ambiente são definidas no arquivo **.env.example**_. 
+_Para utilizar o ambiente de desenvolvimento, basta renomear o arquivo .env.example para .env e alterar as variáveis de ambiente._
