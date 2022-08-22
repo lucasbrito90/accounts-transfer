@@ -11,8 +11,7 @@ class TransactionController extends Controller
 {
     public function __construct(
         protected WalletService $service
-    )
-    {
+    ) {
     }
 
     public function __invoke(TransferBalanceWalletsRequest $request): JsonResponse

@@ -11,10 +11,10 @@ class ThirdPartyValidate extends WalltesTransactionsValidate
     public function handle(Customer $customer, float $amount)
     {
         $client = new Client();
-        $response = $client->request('GET',  config('services.validator.address'));
+        $response = $client->request('GET', config('services.validator.address'));
         $body = json_decode($response->getBody()->getContents());
 
-        if ($response->getStatusCode() === 200 && $body->message === 'Autorizado' ) {
+        if ($response->getStatusCode() === 200 && $body->message === 'Autorizado') {
             return parent::handle($customer, $amount);
         }
 

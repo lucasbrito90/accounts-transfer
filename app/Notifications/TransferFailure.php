@@ -41,7 +41,7 @@ class TransferFailure extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->line('Transferência Falhou.')
             ->subject('Transferência Falhou')
             ->greeting('Ola! Sr(a). ' . $this->customer->name)

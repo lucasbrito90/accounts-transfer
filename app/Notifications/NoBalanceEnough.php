@@ -42,7 +42,7 @@ class NoBalanceEnough extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('Sem Saldo Suficiente para Transação.')
                     ->subject('Sem Saldo Suficiente')
                     ->greeting('Ola! Sr(a). ' . $this->customer->name)

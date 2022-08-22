@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['defaultJsonResponse'])->group(function () {
-
     Route::group(['prefix' => 'customers'], function () {
         Route::get('/', CustomerController::class);
         Route::post('/create', CreateCustomerController::class);
@@ -26,7 +25,6 @@ Route::middleware(['defaultJsonResponse'])->group(function () {
     Route::group(['prefix' => 'transactions'], function () {
         Route::post('/create', TransactionController::class);
     });
-
 });
 
 

@@ -45,7 +45,6 @@ class TransferTest extends TestCase
 
         $validator = new IsBalanceEnoughValidate();
         $validator->handle($this->shopkeeper, 50000);
-
     }
 
     /** @test */

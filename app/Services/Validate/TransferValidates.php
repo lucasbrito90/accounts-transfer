@@ -13,7 +13,6 @@ class TransferValidates
     {
         $this->wallet = $wallet;
         $this->errors = [];
-
     }
 
     public static function build(Wallet $wallet)
@@ -44,5 +43,4 @@ class TransferValidates
     {
         return $this->errors;
     }
-
 }

@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\ForbiddenTranferEvent;
 use App\Notifications\ForbiddenTransferNotify;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class ForbiddenCustomerTransferListener
 {

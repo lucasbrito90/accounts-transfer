@@ -42,7 +42,7 @@ class AmountSucessFullyReceived extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->line('Valor Recebido via transação.')
             ->subject('Valor Recebido via transação.')
             ->greeting('Ola! Sr(a). ' . $this->customer->name)

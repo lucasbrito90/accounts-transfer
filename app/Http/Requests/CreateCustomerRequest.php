@@ -29,7 +29,7 @@ class CreateCustomerRequest extends FormRequest
             'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:customers',
             'document' => 'required|string|max:255|unique:customers',
-            'type' => ['required', 'string', 'max:255', new TypesCustomersRules],
+            'type' => ['required', 'string', 'max:255', new TypesCustomersRules()],
             'password' => 'required|string|min:6',
         ];
     }

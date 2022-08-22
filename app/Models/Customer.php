@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Customer extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $with = ['wallets'];
 

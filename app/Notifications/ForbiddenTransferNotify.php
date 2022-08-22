@@ -41,7 +41,7 @@ class ForbiddenTransferNotify extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('Erro ao transferir valor.')
                     ->subject('Erro ao transferir valor')
                     ->greeting('Ola! Sr(a). ' . $this->customer->name)

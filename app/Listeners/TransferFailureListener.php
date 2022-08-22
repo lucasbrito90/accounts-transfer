@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\TransferenceFailedEvent;
 use App\Notifications\TransferFailure;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class TransferFailureListener
 {
