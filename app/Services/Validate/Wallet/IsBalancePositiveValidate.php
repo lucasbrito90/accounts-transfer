@@ -10,13 +10,11 @@ class IsBalancePositiveValidate extends WalltesTransactionsValidate
 {
     public function handle(Customer $customer, float $amount)
     {
-
         if ($amount <= 0) {
             $this->sendEmail($customer);
             throw new HttpException(422, 'Amount is not positive');
         }
         return parent::handle($customer, $amount);
-
     }
 
     public function sendEmail(Customer $customer): void
@@ -25,5 +23,4 @@ class IsBalancePositiveValidate extends WalltesTransactionsValidate
             event(new TransferenceFailedEvent($customer->wallets));
         }
     }
-
 }

@@ -45,7 +45,7 @@ class NotTransferShopkeeperTest extends TestCase
         $validator = $this->createMock(IsACustomerShopkeeper::class);
         $validator
             ->method('handle')
-            ->will($this->throwException(new ModelNotFoundException));
+            ->will($this->throwException(new ModelNotFoundException()));
 
         $validator->handle($customerMock);
     }

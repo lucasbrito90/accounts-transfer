@@ -2,7 +2,6 @@
 
 namespace App\Services\Validate\Customer;
 
-
 use App\Models\Customer;
 use App\Services\Validate\Customer\Contract\CustomerValidateContract;
 

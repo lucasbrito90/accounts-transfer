@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\DTO\CustomerValueData;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Services\CustomerService;
-use Illuminate\Http\Request;
 
 class CreateCustomerController extends Controller
 {
     public function __construct(
         private CustomerService $service
-    )
-    {
+    ) {
     }
 
     public function __invoke(CreateCustomerRequest $request)

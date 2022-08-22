@@ -42,7 +42,7 @@ class AmountSucessFullyTransferred extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->line('Valor Transferido com Sucesso!.')
             ->subject('Valor Transferido com Sucesso!')
             ->greeting('Ola! Sr(a). ' . $this->customer->name)

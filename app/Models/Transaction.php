@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Transaction extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $fillable = [
         'amount', 'type'

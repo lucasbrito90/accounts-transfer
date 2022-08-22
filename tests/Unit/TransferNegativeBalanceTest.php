@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class TransferNegativeBalanceTest extends TestCase
 {
-   /** @test */
+    /** @test */
     public function shouldThrowsAnExceptionIfTheAmountIsNegative()
     {
         $this->expectException(HttpException::class);

@@ -9,8 +9,7 @@ class CustomerService
 {
     public function __construct(
         public CustomerRepositoryContract $customer
-    )
-    {
+    ) {
     }
 
     public function create(array $payload): Customer

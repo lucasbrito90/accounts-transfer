@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\NoBalanceEnoughEvent;
 use App\Notifications\NoBalanceEnough;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendEmailNoBalanceEnough
 {

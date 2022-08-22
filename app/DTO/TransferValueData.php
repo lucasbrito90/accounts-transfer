@@ -4,7 +4,6 @@ namespace App\DTO;
 
 final class TransferValueData implements DataTransferObjectContract
 {
-
     public function __construct(
         public readonly int $source,
         public readonly float $amount,
@@ -29,5 +28,4 @@ final class TransferValueData implements DataTransferObjectContract
             'target' => $this->target,
         ];
     }
-
 }

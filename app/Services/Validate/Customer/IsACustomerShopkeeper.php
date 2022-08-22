@@ -29,5 +29,4 @@ class IsACustomerShopkeeper extends CustomerValidates
             event(new ForbiddenTranferEvent($customer));
         }
     }
-
 }

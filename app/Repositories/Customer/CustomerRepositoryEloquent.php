@@ -9,10 +9,10 @@ use Illuminate\Support\Collection;
 
 class CustomerRepositoryEloquent implements CustomerRepositoryContract
 {
-
     public function __construct(
         protected Customer $model
-    ) {}
+    ) {
+    }
 
 
     public function all(): Collection
